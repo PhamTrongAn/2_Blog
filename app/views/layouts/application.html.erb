@@ -9,6 +9,44 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<div id="sidebar">
+  		<div id="logo">
+  			<%= link_to root_path do %>
+  				<%= image_tag "logo.png", {:style => 'width: 250%; height: 250%'} %>
+  			<% end %>
+  		</div>
+
+  		<ul>
+  			<li class="category">Website</li>
+  			<li><%= link_to "Blog", root_path =%></li>
+  			<li>About</li>
+  		</ul>
+
+  		<ul>
+  			<li class="category">Social</li>
+  			<li>Twitter</li>
+  			<li>Instagram</li>
+  			<li>GitHub</li>
+  			<li>Email</li>
+  		</ul>
+
+  		<p class="sign_in">Admin Login</p>
+  	</div>
+  	
+	<div id="main_content">
+		<div id="header">
+				<p>All Posts</p>
+				<div class="buttons">
+					<div style="float:left;"><%= button_to "New Post", new_post_path, :class => 'button', :method => :get %></div>
+					<div style="float:left;"><%= button_to "Log Out", root_path, :class => 'button', :method => :get %></div>
+					<div style="clear:both;"></div>
+				</div>
+		</div>
+
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert") %>
+		<% end %>
+
+	<%= yield %>
   </body>
 </html>
