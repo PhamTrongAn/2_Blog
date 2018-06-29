@@ -19,15 +19,15 @@
   		<ul>
   			<li class="category">Website</li>
   			<li><%= link_to "Blog", root_path =%></li>
-  			<li>About</li>
+  			<li><%= link_to "About", about_path =%></li>
   		</ul>
 
   		<ul>
   			<li class="category">Social</li>
-  			<li>Twitter</li>
-  			<li>Instagram</li>
-  			<li>GitHub</li>
-  			<li>Email</li>
+  			<li><a href="https://twitter.com/AnPhTr275">Twitter</a></li>
+  			<li><a href="https://www.instagram.com/ryan_271995/">Instagram</a></li>
+  			<li><a href="https://github.com/PhamTrongAn/">GitHub</a></li>
+  			<li><a href="https://facebook.com/TrogAnPham">Facebook</a></li>
   		</ul>
 
   		<p class="sign_in">Admin Login</p>
@@ -35,7 +35,13 @@
   	
 	<div id="main_content">
 		<div id="header">
-				<p>All Posts</p>
+			<% if current_page?(root_path) %>
+        <p>All Posts</p>
+      <% elsif current_page?(about_path) %>
+        <p>About</p>
+      <% else %>
+        <%= link_to "Back to All Posts", root_path %>
+      <% end %>
 				<div class="buttons">
 					<div style="float:left;"><%= button_to "New Post", new_post_path, :class => 'button', :method => :get %></div>
 					<div style="float:left;"><%= button_to "Log Out", root_path, :class => 'button', :method => :get %></div>
