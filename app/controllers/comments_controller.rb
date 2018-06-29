@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:create]
+
   # POST /comments
   # POST /comments.json
   def create
